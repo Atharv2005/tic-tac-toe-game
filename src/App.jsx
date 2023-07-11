@@ -21,9 +21,15 @@ function App() {
     const winner = checkWinner(updatedBoard)
     if (winner) {
       if (winner === "O") {
+        let { oScore } = scores
+        oScore += 1
+        setScores({ ...scores, oScore })
         setBoard(Array(9).fill(null))
         return alert("O is the winner")
       } else {
+        let { xScore } = scores
+        xScore += 1
+        setScores({ ...scores, xScore })
         setBoard(Array(9).fill(null))
         return alert("X is the winner")
       }
@@ -65,7 +71,7 @@ function App() {
     <div>
       <div className='scores'>
         <p> X Score: {scores.xScore}</p>
-        <p> O Score: {scores.xScore}</p>
+        <p> O Score: {scores.oScore}</p>
       </div>
       <div className="board-flex">
 
